@@ -8,11 +8,10 @@
  *
  * Return: Always 0 (success)
  */
-
 int main(int __attribute__((unused)) argc, char *argv[])
 {
-        /* print the name of the program */
-        printf("%s \n", argv[0]);
+	/* Print the name of the program */
+	printf("%s\n", argv[0]);
 
-        return 0;
+	return (0);
 }
