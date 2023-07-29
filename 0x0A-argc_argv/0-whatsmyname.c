@@ -8,6 +8,7 @@
  *
  * Return: Always 0 (success)
  */
+
 int main(int __attribute__((unused)) argc, char *argv[])
 {
 	/* Print the name of the program */
