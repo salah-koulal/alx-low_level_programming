@@ -12,12 +12,13 @@
  * Return: Always 0 (success)
  */
 
-int main(int __attribute__((unused)) argc, char *argv[])
+
+int main(int argc, char *argv[])
 {
-    int ar;
-    for (ar = 0; ar < argc; ar++)
-    {
-        printf("%s\n",argv[ar]);
-    }
-    return 0;
+	int ar;
+
+	for (ar = 0; ar < argc; ar++)
+		printf("%s\n", argv[ar]);
+
+	return (0);
 }
