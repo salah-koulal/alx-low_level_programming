@@ -1,3 +1,5 @@
+#include "main.h"
+
 /**
  * main - Entry point of the program
  *
@@ -15,7 +17,7 @@ int main(int __attribute__((unused)) argc, char *argv[])
     int ar;
         for (ar = 0; ar < argc; ar++)
         {
-            printf("%s \n",argv[ar]);
+            printf("%s\n",argv[ar]);
         }
         return 0;
 }
