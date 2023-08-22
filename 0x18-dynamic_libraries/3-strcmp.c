@@ -2,24 +2,22 @@
 
 /**
  * _strcmp - compares two strings
- * @s1: string 1
- * @s2: string 2
- * Return: 1 if true, 0 if false
-*/
+ * @s1: first string compare
+ * @s2: seconde string compare
+ *
+ * Return: lessthan 0 if s1 is greater than s2
+ */
 
 int _strcmp(char *s1, char *s2)
 {
-	int equal = 0;
-
-	while (*s1)
+	while (*s1 == *s2)
 	{
-		if (*s1 != *s2)
+		if (*s1 == '\0')
 		{
-			equal = ((int)*s1 - 48) - ((int)*s2 - 48);
-			break;
+			return (0);
 		}
 		s1++;
 		s2++;
 	}
-	return (equal);
+	return (*s1 - *s2);
 }

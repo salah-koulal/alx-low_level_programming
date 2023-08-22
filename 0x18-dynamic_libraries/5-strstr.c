@@ -1,30 +1,27 @@
 #include "main.h"
-#include <stdio.h>
-/**
- * *_strstr - description
- * @haystack: string
- * @needle: pointer
- * Return: pointer
- */
 
+/**
+* *_strstr - Entry point
+* @haystack: input
+* @needle: input
+* Return: always 0 (success)
+* or '\0' if no such bytes is found
+*/
 
 char *_strstr(char *haystack, char *needle)
 {
-int iqe, jqe;
+	for (; *haystack != '\0'; haystack++)
+	{
+		char *one = haystack;
+		char *two = needle;
 
-for (iqe = 0; haystack[iqe] > '\0'; iqe++)
-{
-	for (jqe = iqe; haystack[jqe] > '\0' && needle[jqe - iqe] > '\0'; jqe++)
-	{
-		if (haystack[jqe] != needle[jqe - iqe])
+		while (*one == *two && *two != '\0')
 		{
-			break;
+			one++;
+			two++;
 		}
+		if (*two == '\0')
+			return (haystack);
 	}
-	if (needle[jqe - iqe] == '\0')
-	{
-		return (haystack + iqe);
-	}
-}
-return (0);
+	return ('\0');
 }
