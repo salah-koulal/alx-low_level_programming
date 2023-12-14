@@ -1,73 +1,64 @@
 #include "search_algos.h"
 
 /**
- * print_array - prints it
- * @array: array to print
- * @start: start of array
- * @end: end of array
+ * rec_search - searches for a value in an array of
+ * integers using the Binary search algorithm
+ *
+ *
+ * @array: input array
+ * @size: size of the array
+ * @value: value to search in
+ * Return: index of the number
  */
-void print_array(int *array, size_t start, size_t end)
+int rec_search(int *array, size_t size, int value)
 {
+	size_t half = size / 2;
 	size_t i;
 
-	printf("Searching in array:");
-	for (i = start; i <= end; i++)
+	if (array == NULL || size == 0)
+		return (-1);
+
+	printf("Searching in array");
+
+	for (i = 0; i < size; i++)
+		printf("%s %d", (i == 0) ? ":" : ",", array[i]);
+
+	printf("\n");
+
+	if (half && size % 2 == 0)
+		half--;
+
+	if (value == array[half])
 	{
-		if (i != end)
-			printf(" %d,", array[i]);
-		else
-			printf(" %d\n", array[i]);
+		if (half > 0)
+			return (rec_search(array, half + 1, value));
+		return ((int)half);
 	}
+
+	if (value < array[half])
+		return (rec_search(array, half + 1, value));
+
+	half++;
+	return (rec_search(array + half, size - half, value) + half);
 }
 
-
 /**
-  * rec_search - recursively search using binary algo
-  * @arr: array to search
-  * @l: left most value
-  * @r: right most value
-  * @val: value to search
-  *
-  * Return: index or -1 if not found
-  */
-
-int rec_search(int *arr, int l, int r, int val)
-{
-	int mid;
-
-	if (r >= l)
-	{
-		mid = l + (r - l) / 2;
-		print_array(arr, l, r);
-
-		if (arr[mid] == val)
-		{
-			if (mid != 0 && arr[mid - 1] == val)
-				return (rec_search(arr, l, mid, val));
-			return (mid);
-		}
-
-		if (arr[mid] > val)
-			return (rec_search(arr, l, mid, val));
-
-		return (rec_search(arr, mid + 1, r, val));
-	}
-	return (-1);
-}
-
-
-/**
-  * advanced_binary - Search for value in an array of ints using binary search
-  * @array: array to search
-  * @size: of array
-  * @value: Value to search for
-  *
-  * Return: first index where the value is located
-  */
-
+ * advanced_binary - calls to rec_search to return
+ * the index of the number
+ *
+ * @array: input array
+ * @size: size of the array
+ * @value: value to search in
+ * Return: index of the number
+ */
 int advanced_binary(int *array, size_t size, int value)
 {
-	if (array && size)
-		return (rec_search(array, 0, (int)size - 1, value));
-	return (-1);
+	int index;
+
+	index = rec_search(array, size, value);
+
+	if (index >= 0 && array[index] != value)
+		return (-1);
+
+	return (index);
 }
